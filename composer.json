@@ -1,0 +1,24 @@
+{
+	"name": "apydevs/products",
+	"description": "",
+	"type": "library",
+	"version": "1.0",
+	"license": "proprietary",
+	"require": {},
+	"autoload": {
+		"psr-4": {
+			"Apydevs\\Products\\": "src/",
+			"Apydevs\\Products\\Tests\\": "tests/",
+			"Apydevs\\Products\\Database\\Factories\\": "database/factories/",
+			"Apydevs\\Products\\Database\\Seeders\\": "database/seeders/"
+		}
+	},
+	"minimum-stability": "stable",
+	"extra": {
+		"laravel": {
+			"providers": [
+				"Apydevs\\Products\\Providers\\ProductsServiceProvider"
+			]
+		}
+	}
+}
