@@ -3,6 +3,7 @@
 namespace Apydevs\Products\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Apydevs\Products\Models\Model>
@@ -18,9 +19,10 @@ class ProductFactory extends Factory
     {
         $price = $this->faker->randomFloat(2, 100, 1000); // Generate a base price
         $vatRate = $this->faker->randomElement([5, 10, 20]); // VAT rate percentages
-
+        $title =  $this->faker->words(3, true);
         return [
-            'title' => $this->faker->words(3, true),  // Product title
+            'title' => $title,  // Product title
+            'slug'=>Str::slug($title),
             'type' => $this->faker->randomElement(['Electronics', 'Household', 'Furniture', 'Mobile']),  // Product type
             'description' => $this->faker->sentence,  // Product description
             'manufacture' => $this->faker->company,  // Manufacturer name
