@@ -12,7 +12,7 @@ return new class() extends Migration {
 
             $table->string('title');
             $table->string('type')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('manufacture')->nullable();
             $table->string('model')->nullable();
             $table->integer('quantity');
