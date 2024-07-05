@@ -2,7 +2,9 @@
 
 namespace Apydevs\Products\Livewire;
 
+use Apydevs\Orders\Models\Order;
 use Apydevs\Products\Models\Product;
+use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\Views\Columns\DateColumn;
@@ -10,7 +12,7 @@ use Rappasoft\LaravelLivewireTables\Views\Columns\DateColumn;
 
 class ProductsTable extends DataTableComponent
 {
-    protected $model = Product::class;
+    //protected $model = Product::class;
 
 
     public function configure(): void
@@ -61,6 +63,13 @@ class ProductsTable extends DataTableComponent
                     )
                 )->html(),
         ];
+
+    }
+
+
+    public function builder(): Builder
+    {
+        return Product::query();
 
     }
 }
