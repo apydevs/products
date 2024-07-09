@@ -18,6 +18,10 @@ class ProductsTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id');
+        $this->setConfigurableAreas([
+
+            'toolbar-right-end' => 'products::components.add-product',
+        ]);
     }
 
     public function columns(): array
