@@ -34,7 +34,7 @@ class ProductsTable extends DataTableComponent
             Column::make('ID', 'id')
                 ->hideIf(true)
                 ->sortable()->searchable(),
-            Column::make('title', 'title')
+            Column::make('Title', 'title')
                 ->sortable()->searchable(),
 //            Column::make('type', 'type')
 //                ->sortable()->searchable(),
@@ -47,15 +47,15 @@ class ProductsTable extends DataTableComponent
 //            Column::make('low_quantity', 'low_quantity')
 //                ->sortable()->searchable(),
 
-            Column::make('price', 'price')
+            Column::make('Price', 'price')
                 ->sortable()->searchable(),
 //            Column::make('supplier_ref', 'supplier_ref')
 //                ->sortable()->searchable(),
-            Column::make('category', 'category.name')->format(fn($row)=>ucfirst($row))
+            Column::make('Category', 'category.name')->format(fn($row)=>ucfirst($row))
                 ->sortable()->searchable(),
 //            Column::make('Pre ordered', 'pre-order')
 //                ->sortable()->searchable(),
-            Column::make('status', 'status')->format(fn($row)=>ucfirst($row))
+            Column::make('Status', 'status')->format(fn($row)=>ucfirst($row))
                 ->sortable()->searchable(),
             Column::make('Action')
                 ->label(
