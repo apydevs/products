@@ -55,7 +55,7 @@
                             <div class="mt-2">
                                 <select id="category" name="category" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                                     @foreach($categories as $cat)
-                                        <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                                        <option class="capitalize" value="{{ $cat->id }}">{{ $cat->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('category')
@@ -68,9 +68,9 @@
                             <label for="status" class="block text-sm font-medium leading-6 text-gray-900">Status</label>
                             <div class="mt-2">
                                 <select id="status" name="status" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                    <option value="active">active</option>
-                                    <option value="draft">draft</option>
-                                    <option value="disabled">disabled</option>
+                                    <option value="active" class="capitalize">active</option>
+                                    <option value="draft" class="capitalize">draft</option>
+                                    <option value="disabled" class="capitalize">disabled</option>
                                 </select>
                                 @error('status')
                                 <span class="text-sm text-red-500">{{ $message }}</span>
