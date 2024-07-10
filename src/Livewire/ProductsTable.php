@@ -38,10 +38,10 @@ class ProductsTable extends DataTableComponent
                 ->sortable()->searchable(),
 //            Column::make('type', 'type')
 //                ->sortable()->searchable(),
-            Column::make('manufacture', 'manufacture')
-                ->sortable()->searchable(),
-            Column::make('model', 'model')
-                ->sortable()->searchable(),
+//            Column::make('manufacture', 'manufacture')
+//                ->sortable()->searchable(),
+//            Column::make('model', 'model')
+//                ->sortable()->searchable(),
 //            Column::make('quantity', 'quantity')
 //                ->sortable()->searchable(),
 //            Column::make('low_quantity', 'low_quantity')
