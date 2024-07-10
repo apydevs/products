@@ -51,7 +51,7 @@ class ProductsTable extends DataTableComponent
                 ->sortable()->searchable(),
 //            Column::make('supplier_ref', 'supplier_ref')
 //                ->sortable()->searchable(),
-            Column::make('category_id', 'category.name')->format(fn($row)=>ucfirst($row))
+            Column::make('category', 'category.name')->format(fn($row)=>ucfirst($row))
                 ->sortable()->searchable(),
 //            Column::make('Pre ordered', 'pre-order')
 //                ->sortable()->searchable(),
