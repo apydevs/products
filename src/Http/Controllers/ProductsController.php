@@ -63,7 +63,7 @@ class ProductsController extends Controller
 
             // Iterate over each uploaded file
             foreach ($request->file('file-upload') as $file) {
-                $path = $file->store('products', 'public');
+                $path = $file->store('images', 'public');
                 $data[] = asset($path);
             }
 
