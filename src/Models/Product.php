@@ -18,4 +18,11 @@ class Product extends Model
 
         static::addGlobalScope(new DynamicLikeScope);
     }
+
+
+
+    public function category(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Category::class,'id','category_id');
+    }
 }

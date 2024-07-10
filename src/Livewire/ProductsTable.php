@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\Views\Columns\DateColumn;
+use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
+use Rappasoft\LaravelLivewireTables\Views\Filters\TextFilter;
 
 
 class ProductsTable extends DataTableComponent
@@ -49,11 +51,11 @@ class ProductsTable extends DataTableComponent
                 ->sortable()->searchable(),
 //            Column::make('supplier_ref', 'supplier_ref')
 //                ->sortable()->searchable(),
-            Column::make('category_id', 'category_id')
+            Column::make('category_id', 'category.name')->format(fn($row)=>ucfirst($row))
                 ->sortable()->searchable(),
 //            Column::make('Pre ordered', 'pre-order')
 //                ->sortable()->searchable(),
-            Column::make('status', 'status')
+            Column::make('status', 'status')->format(fn($row)=>ucfirst($row))
                 ->sortable()->searchable(),
             Column::make('Action')
                 ->label(
@@ -73,7 +75,11 @@ class ProductsTable extends DataTableComponent
 
     public function builder(): Builder
     {
-        return Product::query();
+        return Product::query()->with('category');
 
     }
+
+
+
+
 }
