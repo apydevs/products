@@ -37,7 +37,7 @@ class ProductsController extends Controller
         $mainImage = null;
 
         if ($request->hasFile('main')) {
-            $path = $request->file('main')->store('images', 'public');
+            $path = $request->file('main')->store('uploads/images', 'public');
             $mainImage = asset($path);
         }
 
@@ -63,7 +63,7 @@ class ProductsController extends Controller
 
             // Iterate over each uploaded file
             foreach ($request->file('file-upload') as $file) {
-                $path = $file->store('images', 'public');
+                $path = $file->store('uploads/images', 'public');
                 $data[] = asset($path);
             }
 
