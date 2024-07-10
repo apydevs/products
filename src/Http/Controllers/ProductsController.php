@@ -37,8 +37,8 @@ class ProductsController extends Controller
         $mainImage = null;
 
         if ($request->hasFile('main')) {
-            $path = $request->file('main')->store('uploads/images', 'public');
-            $mainImage = asset($path);
+            $path = $request->file('main')->store('images', 'public');
+            $mainImage = asset('uploads/'.$path);
         }
 
         // Create the product
@@ -63,8 +63,8 @@ class ProductsController extends Controller
 
             // Iterate over each uploaded file
             foreach ($request->file('file-upload') as $file) {
-                $path = $file->store('uploads/images', 'public');
-                $data[] = asset($path);
+                $path = $file->store('images', 'public');
+                $data[] = asset('uploads/'.$path);
             }
 
             // If there are uploaded files, store their paths in the database
