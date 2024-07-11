@@ -103,7 +103,7 @@ class ProductsTable extends DataTableComponent
                 ->setFirstOption('active')
                 ->filter(function(Builder $builder, string $value) {
                     if ($value !== '') {
-                        $builder->where('status','iLike', '%'.$value.'%');
+                        $builder->where('status', $value);
                     }
                 }),
              SelectFilter::make('Categories')
