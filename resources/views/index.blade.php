@@ -42,9 +42,9 @@
 
 
 
-        <x-slideover.left>
-            <livewire:products::product-information/>
-        </x-slideover.left>
+{{--        <x-slideover.left>--}}
+{{--            <livewire:products::product-information/>--}}
+{{--        </x-slideover.left>--}}
 
 
     </div>

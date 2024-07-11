@@ -3,6 +3,7 @@
 namespace Apydevs\Products\Livewire;
 
 use Apydevs\Orders\Models\Order;
+use Apydevs\Products\Models\Category;
 use Apydevs\Products\Models\Product;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
@@ -24,6 +25,10 @@ class ProductsTable extends DataTableComponent
 
             'toolbar-right-end' => 'products::components.add-product',
         ]);
+    }
+
+    public function mount() {
+        $this->setFilter('status', 'active');
     }
 
     public function columns(): array
@@ -61,7 +66,7 @@ class ProductsTable extends DataTableComponent
                 ->label(
                     fn ($row, Column $column) => view('products::components.livewire.datatables.action-column')->with(
                         [
-                            'editLink' =>  $row,
+                            'editLink' =>  route('products.edit', $row),
                             'deleteLink' => route('products.destroy', $row),
                             'hoverName' => $row->title,
                             'id'=>$row->id
@@ -78,6 +83,40 @@ class ProductsTable extends DataTableComponent
         return Product::query()->with('category');
 
     }
+
+
+    public function filters(): array
+    {
+
+       $cat =  Category::select('id','name')->get();
+        $categories = $cat->pluck('name', 'id')->all();
+
+
+
+        return [
+            SelectFilter::make('Status')
+                ->options([
+                    'active' => 'Active',
+                    'inactive' => 'Inactive',
+                    'draft' => 'Draft',
+                ])
+                ->setFirstOption('active')
+                ->filter(function(Builder $builder, string $value) {
+                    if ($value !== '') {
+                        $builder->where('status','iLike', '%'.$value.'%');
+                    }
+                }),
+             SelectFilter::make('Categories')
+                 ->options($categories)
+                 ->setFirstOption('1')
+                 ->filter(function(Builder $builder, string $value) {
+                     if ($value !== '') {
+                         $builder->where('category_id', $value);
+                     }
+                 })
+        ];
+    }
+
 
 
 

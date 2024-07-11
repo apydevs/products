@@ -4,9 +4,7 @@
 
     @isset ( $editLink )
             <x-tool-tips.tool-tip hoverTxt="Edit {{$hoverName}}">
-                <a @click="slideOverOpen=true" wire:click="$dispatch('productSelected', { id: {{ $editLink->id }} })"
-
-{{--                   href="{{ $editLink }}"--}}
+                <a  href="{{ $editLink}}"
                    class="" x-ref="content">
                     <x-svg-icon   iconName="edit" classNames="w-4 h-4"  />
                 </a>

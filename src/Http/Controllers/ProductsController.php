@@ -26,7 +26,8 @@ class ProductsController extends Controller
     public function create(){
 
         return view('products::create',[
-            'categories'=>Category::get()
+            'categories'=>Category::get(),
+            'product'=>null
         ]);
 
     }
@@ -81,5 +82,61 @@ class ProductsController extends Controller
         return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
 
+
+    public function edit(Product $product){
+        return view('products::create',[
+            'categories'=>Category::get(),
+            'product'=>$product
+        ]);
+    }
+
+    public function update(StoreProductRequest $request ,Product $product) {
+        $validated = $request->validated();
+        $mainImage = null;
+
+        if ($request->hasFile('main')) {
+            $path = $request->file('main')->store('images', 'public');
+            $mainImage = asset('uploads/'.$path);
+        }
+
+        // Create the product
+        $product->update([
+            'title' => $validated['title'],
+            'description' => $validated['description'],
+            'category_id' => $validated['category'],
+            'status' => $validated['status'],
+            'quickcode' => $validated['quickcode'],
+            'sku' => $validated['sku'],
+            'price' => $validated['baseprice'],
+            'tier1' => $validated['tier1'],
+            'tier2' => $validated['tier2'],
+            'tier3' => $validated['tier3'],
+            'quantity' => 10,
+            'main_image' => $mainImage
+        ]);
+
+        // Handle file uploads
+        if ($request->hasFile('file-upload')) {
+            $data = [];
+
+            // Iterate over each uploaded file
+            foreach ($request->file('file-upload') as $file) {
+                $path = $file->store('images', 'public');
+                $data[] = asset('uploads/'.$path);
+            }
+
+            // If there are uploaded files, store their paths in the database
+            if (count($data) > 0) {
+                $product->product_images = json_encode($data);
+                $product->save();
+            }
+
+            // Debugging information
+
+        }
+
+        toast()->success('Product Updated successfully')->pushOnNextPage();
+        return redirect()->route('products.index')->with('success', 'Product created successfully.');
+    }
 
 }

@@ -25,7 +25,7 @@ class StoreProductRequest extends FormRequest
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'category' => 'required|integer|exists:categories,id', // Assuming you have a categories table
-            'status' => 'required|string|in:active,inactive',
+            'status' => 'required|string|in:active,inactive,draft',
             'file-upload.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validation for each image file
             'quickcode' => 'nullable|string|max:100',
             'sku' => 'nullable|string|max:100',
