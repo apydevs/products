@@ -176,7 +176,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <p class="col-span-full text-center text-red-500 text-sm">If product is a contract phone, please use base price and tiers as weekly price not contract total price.</p>
+                        <p class="col-span-full text-center text-red-500 text-sm">If adding a Trust Mobile product, please ensure the Base Price and tier pricing is the weekly price of the product NOT the full price</p>
                     </div>
                 </div>
             </div>
