@@ -113,7 +113,8 @@ class ProductsController extends Controller
             'tier3' => $validated['tier3'],
             'quantity' => 10,
             'main_image' => $mainImage,
-            'system_entry' => true
+            'system_entry' => true,
+            'bestseller' => $validated['bestseller']
         ]);
 
         // Handle file uploads

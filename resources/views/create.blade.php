@@ -68,6 +68,25 @@
                         </div>
 
                         <div class="sm:col-span-3">
+                            <label for="bestseller" class="block text-sm font-medium leading-6 text-gray-900">Bestseller</label>
+                            <div class="mt-2">
+
+                                <div class="sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
+                                    <div class="flex items-center">
+                                        <input id="bestseller-false" name="bestseller" type="radio"  {{!$product->bestseller ? 'checked':''}} value="0" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                                        <label for="bestseller-false" class="ml-3 block text-sm font-medium leading-6 text-gray-900">False</label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input id="bestseller" name="bestseller" type="radio"  {{$product->bestseller ? 'checked':''}} value="1"  class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                                        <label for="bestseller" class="ml-3 block text-sm font-medium leading-6 text-gray-900">True</label>
+                                    </div>
+                                </div>
+                                @error('category')
+                                <span class="text-sm text-red-500">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="sm:col-span-3">
                             <label for="status" class="block text-sm font-medium leading-6 text-gray-900">Status</label>
                             <div class="mt-2">
                                 <select id="status" name="status" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">

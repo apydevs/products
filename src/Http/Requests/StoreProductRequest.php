@@ -34,6 +34,7 @@ class StoreProductRequest extends FormRequest
             'tier2' => 'required|numeric|min:0',
             'tier3' => 'required|numeric|min:0',
             'main.*' => 'image|mimes:jpeg,png,jpg,jpeg|max:12048', // Validation for each image file
+            'bestseller' => 'required|boolean',
         ];
     }
 
