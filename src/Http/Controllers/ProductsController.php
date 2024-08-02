@@ -94,10 +94,7 @@ class ProductsController extends Controller
         $validated = $request->validated();
         $mainImage = null;
 
-        if ($request->hasFile('main')) {
-            $path = $request->file('main')->store('images', 'public');
-            $mainImage = asset('uploads/'.$path);
-        }
+
 
         // Create the product
         $product->update([
@@ -112,10 +109,15 @@ class ProductsController extends Controller
             'tier2' => $validated['tier2'],
             'tier3' => $validated['tier3'],
             'quantity' => 10,
-            'main_image' => $mainImage,
             'system_entry' => true,
             'bestseller' => $validated['bestseller']
         ]);
+
+        if ($request->hasFile('main')) {
+            $path = $request->file('main')->store('images', 'public');
+            $mainImage = asset('uploads/'.$path);
+            $product->main_image = $mainImage;
+        }
 
         // Handle file uploads
         if ($request->hasFile('file-upload')) {
