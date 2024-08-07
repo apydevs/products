@@ -84,9 +84,18 @@ class ProductsController extends Controller
 
 
     public function edit(Product $product){
+        $bestseller =  false;
+        if ($product->bestSeller()->exists()) {
+           $bestseller =  true;
+        }
+
+        $images = json_decode($product->product_images);
+
         return view('products::create',[
             'categories'=>Category::get(),
-            'product'=>$product
+            'product'=>$product,
+            'bestseller'=>$bestseller,
+            'images' => $images
         ]);
     }
 
@@ -110,7 +119,7 @@ class ProductsController extends Controller
             'tier3' => $validated['tier3'],
             'quantity' => 10,
             'system_entry' => true,
-            'bestseller' => $validated['bestseller']
+
         ]);
 
         if ($request->hasFile('main')) {
@@ -119,6 +128,12 @@ class ProductsController extends Controller
             $product->main_image = $mainImage;
         }
 
+        if($request->bestseller) {
+            $product->bestSeller()->create([
+                'product_id' => $product->id,
+                'user_id' => auth()->id()
+            ]);
+        }
         // Handle file uploads
         if ($request->hasFile('file-upload')) {
             $data = [];

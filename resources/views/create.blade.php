@@ -53,7 +53,7 @@
                             <p class="mt-3 text-sm leading-6 text-gray-600">Information about the product.</p>
                         </div>
 
-                        <div class="sm:col-span-3">
+                        <div class="sm:col-span-2">
                             <label for="category" class="block text-sm font-medium leading-6 text-gray-900">Category</label>
                             <div class="mt-2">
                                 <select id="category" name="category"  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
@@ -66,27 +66,7 @@
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="sm:col-span-3">
-                            <label for="bestseller" class="block text-sm font-medium leading-6 text-gray-900">Bestseller</label>
-                            <div class="mt-2">
-
-                                <div class="sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
-                                    <div class="flex items-center">
-                                        <input id="bestseller-false" name="bestseller" type="radio"  {{!$product->bestseller ? 'checked':''}} value="0" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
-                                        <label for="bestseller-false" class="ml-3 block text-sm font-medium leading-6 text-gray-900">False</label>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <input id="bestseller" name="bestseller" type="radio"  {{$product->bestseller ? 'checked':''}} value="1"  class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
-                                        <label for="bestseller" class="ml-3 block text-sm font-medium leading-6 text-gray-900">True</label>
-                                    </div>
-                                </div>
-                                @error('category')
-                                <span class="text-sm text-red-500">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="sm:col-span-3">
+                        <div class="sm:col-span-2">
                             <label for="status" class="block text-sm font-medium leading-6 text-gray-900">Status</label>
                             <div class="mt-2">
                                 <select id="status" name="status" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
@@ -99,9 +79,29 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="sm:col-span-2">
+                            <label for="bestseller" class="block text-sm font-medium leading-6 text-gray-900">Bestseller</label>
+                            <div class="mt-2">
 
 
-                    <div class="col-span-2">
+                                <div class="sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
+                                    <div class="flex items-center">
+                                        <input id="bestseller-false" name="bestseller" type="radio"  {{!$bestseller ? 'checked':''}} value="0" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                                        <label for="bestseller-false" class="ml-3 block text-sm font-medium leading-6 text-gray-900">False</label>
+                                    </div>
+
+                                    <div class="flex items-center">
+                                        <input id="bestseller" name="bestseller" type="radio"  {{$bestseller ? 'checked':''}} value="1"  class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                                        <label for="bestseller" class="ml-3 block text-sm font-medium leading-6 text-gray-900">True</label>
+                                    </div>
+                                </div>
+                                @error('category')
+                                <span class="text-sm text-red-500">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-span-2">
                         <label for="main" class="block text-sm font-medium leading-6 text-gray-900">Main Image <p class="text-xs leading-5 text-gray-600">PNG, JPG, 10MB</p></label>
                         <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                             <div class="text-center">
@@ -131,7 +131,27 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-span-2 px-6">
+                            <label for="main" class="block text-sm font-medium leading-6 text-gray-900">Main Image</label>
+                            <div class=" flex justify-center rounded-lg  px-6">
+                                <div class="text-center">
+                                 <img  src="{{$product->main_image}}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-4">
+                            <div class="grid grid-cols-4 gap-4">
+                                @foreach($images as $key=>$img)
+                                    <img  src="{{$img}}" />
+
+                                @endforeach
+                            </div>
+
+                        </div>
                     </div>
+
+                </div>
                 </div>
 
                 <div class="border-b border-gray-900/10 pb-12">
@@ -198,12 +218,13 @@
                         <p class="col-span-full text-center text-red-500 text-sm">If adding a Trust Mobile product, please ensure the Base Price and tier pricing is the weekly price of the product NOT the full price</p>
                     </div>
                 </div>
-            </div>
 
             <div class="mt-6 flex items-center justify-end gap-x-6">
                 <a href="{{route('products.index')}}" class="text-sm font-semibold leading-6 text-red-900">Cancel</a>
                 <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
             </div>
+
+
         </form>
     </div>
 </x-app-layout>
