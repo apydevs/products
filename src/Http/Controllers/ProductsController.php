@@ -89,6 +89,8 @@ class ProductsController extends Controller
            $bestseller =  true;
         }
 
+
+
         $images = json_decode($product->product_images);
 
         return view('products::create',[
