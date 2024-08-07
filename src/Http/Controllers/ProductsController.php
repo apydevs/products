@@ -84,9 +84,9 @@ class ProductsController extends Controller
 
 
     public function edit(Product $product){
-        $bestseller =  false;
+        $bestseller =  0;
         if ($product->bestSeller()->exists()) {
-           $bestseller =  true;
+           $bestseller =  1;
         }
 
 
