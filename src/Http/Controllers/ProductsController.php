@@ -91,6 +91,10 @@ class ProductsController extends Controller
             $bestseller = 1; // Set to true if a bestseller record exists
         }
 
+        dd([ 'categories'=>Category::get(),
+            'product'=>$product,
+            'bestsellerToggle'=>$bestseller
+        ]);
 
         $images = json_decode($product->product_images);
 
