@@ -87,6 +87,8 @@ class ProductsController extends Controller
 
     public function edit(Product $product){
         // Determine if the product is a bestseller
+
+        dd($product);
         $bestseller = false; // Default to false
 
         if ($product->bestSeller()->exists()) {
