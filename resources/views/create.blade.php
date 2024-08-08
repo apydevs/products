@@ -83,13 +83,6 @@
                             <label for="bestseller" class="block text-sm font-medium leading-6 text-gray-900">Bestseller</label>
                             <div class="mt-2">
 
-
-                                @php
-                                    $bestseller = false; // Default to false
-                                       if ($product->bestSeller()->exists()) {
-                                           $bestseller = true; // Set to true if a bestseller record exists
-                                       }
-                                @endphp
                                 <div class="sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
                                     <div class="flex items-center">
                                         <input id="bestseller-false" name="bestseller" type="radio"  {{$bestsellerToggle == 0 ? 'checked':''}} value="0" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
