@@ -28,7 +28,7 @@ class ProductsController extends Controller
         return view('products::create',[
             'categories'=>Category::get(),
             'product'=>null,
-            'bestsellerToggle'=>0
+            'bestsellerToggle'=>false
 
         ]);
 
@@ -87,15 +87,16 @@ class ProductsController extends Controller
 
     public function edit(Product $product){
         // Determine if the product is a bestseller
-        $bestseller = 0; // Default to false
+        $bestseller = false; // Default to false
 
         if ($product->bestSeller()->exists()) {
-            $bestseller = 1; // Set to true if a bestseller record exists
+            $bestseller = true; // Set to true if a bestseller record exists
         }
 
 
         $images = json_decode($product->product_images);
 
+        dd($bestseller);
         return view('products::create',[
             'categories'=>Category::get(),
             'product'=>$product,
