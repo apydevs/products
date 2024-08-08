@@ -96,7 +96,7 @@ class ProductsController extends Controller
 
         $images = json_decode($product->product_images);
 
-        dd($bestseller);
+
         return view('products::create',[
             'categories'=>Category::get(),
             'product'=>$product,
